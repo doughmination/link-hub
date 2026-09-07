@@ -25,6 +25,7 @@ const subdomains = [
   "meow",
   "mrrp",
   "nextjs",
+  "plural",
   "trans",
   "transbian",
   "transgender",
