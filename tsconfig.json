@@ -21,6 +21,7 @@
     "paths": {
       "@styles/*": ["./src/styles/*"],
       "@app/*": ["./src/app/*"],
+      "@data/*": ["./src/data/*"]
     }
   },
   "include": [

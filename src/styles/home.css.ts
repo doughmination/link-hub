@@ -3,314 +3,434 @@
  * Licensed under the DASL-1.0 Licence.
  * See LICENCE.md in the project root for full licence information.
  */
-/* styles/home.css.ts */
 
-import { style, keyframes } from "@vanilla-extract/css";
+import {
+  style,
+  keyframes,
+} from "@vanilla-extract/css";
 
 import { vars } from "./theme.css";
 
-const slide = keyframes({ to: { backgroundPositionX: "200%" } });
-
 const riseIn = keyframes({
-  from: { opacity: 0, transform: "translateY(16px)" },
-  to: { opacity: 1, transform: "translateY(0)" },
-});
-
-const centerIn = keyframes({
-  from: { opacity: 0, transform: "translateX(-40px)" },
-  to: { opacity: 1, transform: "translateX(0)" },
-});
-
-const float = keyframes({
-  "0%, 100%": { transform: "translateY(0)" },
-  "50%": { transform: "translateY(-6px)" },
-});
-
-const spinGlow = keyframes({
-  to: { transform: "rotate(360deg)" },
-});
-
-const blink = keyframes({
-  "0%, 45%": { opacity: 1 },
-  "50%, 95%": { opacity: 0 },
-  "100%": { opacity: 1 },
-});
-
-const dropIn = keyframes({
-  from: { opacity: 0, transform: "translateY(-12px)" },
-  to: { opacity: 1, transform: "translateY(0)" },
-});
-
-export const page = style({
-  minHeight: "100dvh",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: vars.space.xl,
-  padding: vars.space.lg,
-});
-
-const avatarBox = {
-  size: 140,
-};
-
-export const avatarWrap = style({
-  position: "relative",
-  zIndex: 2,
-  width: `${avatarBox.size}px`,
-  height: `${avatarBox.size}px`,
-  animationName: float,
-  animationDuration: "5s",
-  animationTimingFunction: "ease-in-out",
-  animationIterationCount: "infinite",
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
+  from: {
+    opacity: 0,
+    transform: "translateY(12px)",
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)",
   },
 });
 
-export const avatarDisc = style({
-  position: "absolute",
-  inset: 0,
-  borderRadius: vars.radius.full,
-  background: vars.color.surface,
-  border: `2px solid ${vars.color.border}`,
-  boxShadow: "0 12px 32px -10px rgba(91,206,250,0.35)",
-  zIndex: 0,
+const spin = keyframes({
+  to: {
+    transform: "rotate(360deg)",
+  },
+});
+
+const pulse = keyframes({
+  "0%, 100%": {
+    opacity: 0.45,
+    transform: "scale(1)",
+  },
+  "50%": {
+    opacity: 0.8,
+    transform: "scale(1.08)",
+  },
+});
+
+const bob = keyframes({
+  "0%, 100%": {
+    transform: "translateY(0)",
+  },
+  "50%": {
+    transform: "translateY(6px)",
+  },
+});
+
+const heartbeat = keyframes({
+  "0%, 100%": {
+    transform: "scale(1)",
+  },
+  "15%": {
+    transform: "scale(1.25)",
+  },
+  "30%": {
+    transform: "scale(1)",
+  },
+});
+
+const focusRing = {
+  outline: `2px solid ${vars.color.accentBright}`,
+  outlineOffset: "3px",
+};
+
+// Keeps only a thin band at the edge of a circle, turning a gradient disc into a ring
+const ringMask = "radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px))";
+
+const ringSize = "220px";
+
+// Shared by every inline pixel icon
+export const icon = style({
+  width: "1.25em",
+  height: "1.25em",
+  flexShrink: 0,
+  shapeRendering: "crispEdges",
+});
+
+export const page = style({
+  display: "flex",
+  flexDirection: "column",
+});
+
+export const hero = style({
+  position: "relative",
+  minHeight: "100dvh",
+  display: "grid",
+  gridTemplateRows: "auto 1fr auto",
+  justifyItems: "center",
+  gap: vars.space.lg,
+  padding: `${vars.space.lg} ${vars.space.md}`,
+  textAlign: "center",
+});
+
+export const arrival = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.35rem",
+  padding: `${vars.space.sm} ${vars.space.md}`,
+  fontSize: "0.85rem",
+  color: vars.color.muted,
+  background: "rgba(22, 26, 29, 0.6)",
+  border: `1px solid ${vars.color.border}`,
+  borderRadius: vars.radius.md,
+  backdropFilter: "blur(6px)",
+  animation: `${riseIn} 0.6s ease-out both`,
+});
+
+export const arrivalLine = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space.xs,
+  textAlign: "left",
+  overflowWrap: "anywhere",
+});
+
+export const arrivalHost = style({
+  color: vars.color.accentBright,
+  fontWeight: 700,
+});
+
+export const arrivalRoot = style({
+  color: vars.color.muted,
+});
+
+export const heroCentre = style({
+  alignSelf: "center",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: vars.space.lg,
+  animation: `${riseIn} 0.6s ease-out 0.1s both`,
+});
+
+export const portalRing = style({
+  position: "relative",
+  width: ringSize,
+  height: ringSize,
+  display: "grid",
+  placeItems: "center",
   "::before": {
-    content: "",
+    content: '""',
     position: "absolute",
-    inset: "-7px",
+    inset: 0,
     borderRadius: vars.radius.full,
-    background:
-      "conic-gradient(from 0deg, #5BCEFA, #F5A9B8, #ffffff, #F5A9B8, #5BCEFA)",
-    filter: "blur(11px)",
-    opacity: 0.65,
+    background: `conic-gradient(${vars.color.accentDeep}, ${vars.color.accentBright}, ${vars.color.accent}, ${vars.color.accentDeep})`,
+    mask: ringMask,
+    WebkitMask: ringMask,
+    animation: `${spin} 6s linear infinite`,
+  },
+  "::after": {
+    content: '""',
+    position: "absolute",
+    inset: "-24px",
     zIndex: -1,
-    animationName: spinGlow,
-    animationDuration: "9s",
-    animationTimingFunction: "linear",
-    animationIterationCount: "infinite",
+    borderRadius: vars.radius.full,
+    background: `radial-gradient(circle, ${vars.color.accent} 0%, transparent 65%)`,
+    filter: "blur(18px)",
+    animation: `${pulse} 4s ease-in-out infinite`,
   },
 });
 
 export const avatar = style({
-  position: "absolute",
-  inset: 0,
-  width: "100%",
-  height: "100%",
-  zIndex: 1,
-  objectFit: "cover",
+  width: "136px",
+  height: "136px",
   borderRadius: vars.radius.full,
-  transition: "transform 0.3s ease",
-  selectors: {
-    [`${avatarWrap}:hover &`]: {
-      transform: "scale(1.05)",
-    },
-  },
+  border: `2px solid ${vars.color.border}`,
 });
 
-export const header = style({
-  textAlign: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: vars.space.sm,
-  maxWidth: "100%",
-  animation: `${riseIn} 0.6s ease both`,
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
-  },
-});
-
-// Avatar and wordmark bound as one unit so the tagline below cannot move them.
-// Avatar sits above the wordmark, which types/retypes on its own.
-export const brand = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: vars.space.xs,
-  animation: `${centerIn} 0.7s cubic-bezier(.2,.8,.2,1) both`,
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
-  },
-});
-
-export const name = style({
-  fontSize: "clamp(2rem, 6vw, 3rem)",
+export const title = style({
+  fontSize: "clamp(2rem, 7vw, 3.5rem)",
   fontWeight: 700,
-  letterSpacing: "-0.02em",
-  whiteSpace: "pre",
-  display: "flex",
-  alignItems: "baseline",
-  backgroundImage:
-    "linear-gradient(90deg, #5BCEFA, #F5A9B8, #ffffff, #F5A9B8, #5BCEFA, #5BCEFA)",
-  backgroundSize: "200% 100%",
-  WebkitBackgroundClip: "text",
-  backgroundClip: "text",
-  color: "transparent",
-  animation: `${slide} 6s linear infinite`,
-  filter:
-    "drop-shadow(0 0 14px rgba(91, 206, 250, 0.28)) drop-shadow(0 0 14px rgba(245, 169, 184, 0.28))",
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
-  },
-});
-
-// The label part that types and untypes. It shrink-wraps the typed text so the
-// label and ".is-a.dev" travel together and the pair stays centred.
-// The padding is the caret's lane: the cursor is taken out of flow and parked
-// there, so ".is-a.dev" never shifts as the caret blinks on and off.
-// The typed label. Keep it plain text with no transformed or positioned
-// descendants: either would drop the glyphs out of the h1's
-// background-clip: text and render them invisible.
-export const nameTyped = style({
-  whiteSpace: "pre",
+  lineHeight: 1.1,
+  textShadow: `0 0 24px ${vars.color.accentDeep}`,
 });
 
 export const tagline = style({
-  fontSize: "1.05rem",
+  maxWidth: "32rem",
   color: vars.color.muted,
-  fontFamily: vars.font.mono,
-  // Reserve a line and centre the anchor so typing does not shift the layout.
-  minHeight: "1.6em",
-  width: "100%",
-  textAlign: "center",
 });
 
-// Tagline only; the wordmark types without a caret.
-export const cursor = style({
-  display: "inline-block",
-  marginLeft: "1px",
-  color: vars.color.accent,
-  fontWeight: 700,
-  animation: `${blink} 1.1s step-end infinite`,
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
+export const scrollCue = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "0.25rem",
+  padding: vars.space.xs,
+  fontSize: "0.8rem",
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+  color: vars.color.muted,
+  borderRadius: vars.radius.md,
+  transition: "color 0.2s",
+  selectors: {
+    "&:hover": {
+      color: vars.color.accentBright,
+    },
+    "&:focus-visible": focusRing,
   },
 });
 
-// 58rem holds exactly three 15rem columns plus gaps (47rem) without leaving
-// room for a fourth (63rem), so desktop lands on 3 across and auto-fit still
-// steps down to 2 and then 1 as the viewport narrows.
-export const grid = style({
-  width: "100%",
-  maxWidth: "58rem",
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))",
-  gap: vars.space.md,
-});
+export const scrollCueIcon = style([
+  icon,
+  {
+    width: "28px",
+    height: "28px",
+    color: vars.color.accentBright,
+    animation: `${bob} 1.6s ease-in-out infinite`,
+  },
+]);
 
-// Deliberately motionless. The cards used to animate in, tilt on hover, and
-// fly apart on click; the click animation wrote inline opacity/transform and
-// then navigated, so a bfcache back-navigation restored the page with every
-// card still exploded. Hover is a plain colour change now.
-export const card = style({
+export const content = style({
+  width: "100%",
+  maxWidth: "64rem",
+  margin: "0 auto",
   display: "flex",
   flexDirection: "column",
-  gap: vars.space.xs,
-  padding: vars.space.lg,
+  gap: vars.space.xl,
+  padding: `${vars.space.lg} ${vars.space.md} ${vars.space.lg}`,
+});
+
+export const section = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: vars.space.sm,
+  scrollMarginTop: vars.space.lg,
+});
+
+export const sectionHeading = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space.sm,
+  fontSize: "0.85rem",
+  fontWeight: 700,
+  letterSpacing: "0.12em",
+  textTransform: "uppercase",
+  color: vars.color.accentBright,
+  "::after": {
+    content: '""',
+    flex: 1,
+    height: "1px",
+    background: `linear-gradient(to right, ${vars.color.accentDeep}, transparent)`,
+  },
+});
+
+export const sectionNote = style({
+  marginBottom: vars.space.xs,
+  color: vars.color.muted,
+});
+
+export const routeList = style({
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(17rem, 1fr))",
+  gap: vars.space.md,
+  listStyle: "none",
+});
+
+export const route = style({
+  position: "relative",
+  height: "100%",
+  minHeight: "13rem",
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.35rem",
+  padding: vars.space.md,
+  overflow: "hidden",
   background: vars.color.surface,
   border: `1px solid ${vars.color.border}`,
   borderRadius: vars.radius.lg,
-  transition: "background 0.2s ease, border-color 0.2s ease",
+  transition: "border-color 0.2s, transform 0.2s, box-shadow 0.2s",
+  "::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    background: `radial-gradient(circle at 100% 0%, ${vars.color.accentDeep} 0%, transparent 60%)`,
+    opacity: 0,
+    transition: "opacity 0.2s",
+    pointerEvents: "none",
+  },
   selectors: {
     "&:hover": {
-      background: vars.color.surfaceHover,
       borderColor: vars.color.accent,
+      transform: "translateY(-3px)",
+      boxShadow: `0 12px 32px -12px ${vars.color.accent}`,
+    },
+    "&:hover::before": {
+      opacity: 1,
+    },
+    "&:focus-visible": focusRing,
+  },
+});
+
+export const routeTop = style({
+  position: "relative",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
+  marginBottom: vars.space.xs,
+});
+
+export const routeIcon = style([
+  icon,
+  {
+    width: "40px",
+    height: "40px",
+    padding: "6px",
+    color: vars.color.accentBright,
+    background: vars.color.bg,
+    border: `1px solid ${vars.color.border}`,
+    borderRadius: vars.radius.md,
+    transition: "border-color 0.2s",
+    selectors: {
+      [`${route}:hover &`]: {
+        borderColor: vars.color.accent,
+      },
+    },
+  },
+]);
+
+export const routeIndex = style({
+  fontSize: "2rem",
+  fontWeight: 700,
+  lineHeight: 1,
+  color: vars.color.border,
+  transition: "color 0.2s",
+  selectors: {
+    [`${route}:hover &`]: {
+      color: vars.color.accent,
     },
   },
 });
 
-export const cardTitle = style({
+export const routeHost = style({
+  position: "relative",
+  fontSize: "0.75rem",
+  color: vars.color.accentBright,
+});
+
+export const routeTitle = style({
+  position: "relative",
   fontSize: "1.1rem",
-  fontWeight: 600,
-  display: "flex",
-  alignItems: "center",
-  gap: vars.space.xs,
+  fontWeight: 700,
 });
 
-export const cardArrow = style({
-  color: vars.color.accent,
-});
-
-export const cardDesc = style({
+export const routeDescription = style({
+  position: "relative",
   fontSize: "0.9rem",
   color: vars.color.muted,
 });
 
-export const actions = style({
-  position: "fixed",
-  top: vars.space.md,
-  right: vars.space.md,
-  display: "flex",
-  gap: vars.space.xs,
-  zIndex: 10,
-  animation: `${dropIn} 0.6s ease both 0.2s`,
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
-  },
-});
-
-export const btnPrimary = style({
-  padding: `${vars.space.xs} ${vars.space.md}`,
-  fontSize: "0.9rem",
-  fontWeight: 700,
-  color: "#0a0b10",
-  // Wide gradient that shimmers left-to-right, matching the wordmark.
-  backgroundImage:
-    "linear-gradient(90deg, #5BCEFA, #F5A9B8, #ffffff, #F5A9B8, #5BCEFA)",
-  backgroundSize: "200% 100%",
-  border: "none",
+export const routeBadge = style({
+  position: "relative",
+  alignSelf: "flex-start",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "0.35rem",
+  marginTop: vars.space.xs,
+  padding: "0.2rem 0.6rem",
+  fontSize: "0.75rem",
+  background: vars.color.accentDeep,
+  border: `1px solid ${vars.color.accentBright}`,
   borderRadius: vars.radius.full,
-  textDecoration: "none",
-  animation: `${slide} 6s linear infinite`,
-  transition: "transform 0.18s ease, box-shadow 0.18s ease",
+});
+
+export const routeEnter = style({
+  position: "relative",
+  marginTop: "auto",
+  paddingTop: vars.space.sm,
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "0.35rem",
+  fontSize: "0.8rem",
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+  color: vars.color.muted,
+  transition: "color 0.2s, transform 0.2s",
   selectors: {
-    "&:hover": {
-      transform: "translateY(-2px)",
-      boxShadow: "0 8px 22px -8px rgba(245,169,184,0.6)",
+    [`${route}:hover &`]: {
+      color: vars.color.accentBright,
+      transform: "translateX(4px)",
     },
-    "&:active": {
-      transform: "translateY(0)",
-    },
-  },
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
   },
 });
 
-export const btnSecondary = style({
-  padding: `${vars.space.xs} ${vars.space.md}`,
-  fontSize: "0.9rem",
-  fontWeight: 600,
-  color: vars.color.text,
+export const chipList = style({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: vars.space.xs,
+  listStyle: "none",
+});
+
+export const chip = style({
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "0.3rem",
+  padding: "0.3rem 0.8rem",
+  fontSize: "0.85rem",
   background: vars.color.surface,
   border: `1px solid ${vars.color.border}`,
   borderRadius: vars.radius.full,
-  textDecoration: "none",
-  transition:
-    "background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease",
+  transition: "border-color 0.15s, color 0.15s",
   selectors: {
     "&:hover": {
-      background: vars.color.surfaceHover,
       borderColor: vars.color.accent,
-      transform: "translateY(-2px)",
-      boxShadow: "0 8px 22px -10px rgba(91,206,250,0.45)",
+      color: vars.color.accentBright,
     },
-    "&:active": {
-      transform: "translateY(0)",
-    },
+    "&:focus-visible": focusRing,
   },
 });
 
+export const chipCurrent = style({
+  background: vars.color.accentDeep,
+  borderColor: vars.color.accentBright,
+});
+
 export const footer = style({
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "0.35rem",
+  paddingTop: vars.space.lg,
   fontSize: "0.85rem",
   color: vars.color.muted,
-  fontFamily: vars.font.mono,
-  animation: `${riseIn} 0.6s ease both 0.5s`,
-  "@media": {
-    "(prefers-reduced-motion: reduce)": { animation: "none" },
-  },
+  borderTop: `1px solid ${vars.color.border}`,
 });
+
+export const footerHeart = style([
+  icon,
+  {
+    color: vars.color.accentBright,
+    animation: `${heartbeat} 1.4s ease-in-out infinite`,
+  },
+]);

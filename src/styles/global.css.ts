@@ -3,7 +3,6 @@
  * Licensed under the DASL-1.0 Licence.
  * See LICENCE.md in the project root for full licence information.
  */
-/* styles/global.css.ts */
 
 import {
   globalStyle,
@@ -13,46 +12,29 @@ import {
 
 import {
   vars,
-  darkValues,
+  bloodValues,
 } from "./theme.css";
 
-// Comic Code — the shared face across every site, served from the same CDN the
-// personal site uses. Four cuts (regular / italic / medium / bold). Declared
-// explicitly (no loop): the Turbopack vanilla-extract plugin can't instrument a
-// top-level loop in a .css.ts, which breaks file-scope setup for the whole graph.
+// Declared one by one: Turbopack's vanilla-extract plugin breaks on top-level loops
 globalFontFace("Comic Code", {
-  src: "url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Regular.woff2') format('woff2'), url('https://m.doughmination.gay/f/Comic-Code/woff/ComicCode-Regular.woff') format('woff')",
+  src: "url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Regular.woff2') format('woff2')",
   fontWeight: 400,
   fontStyle: "normal",
   fontDisplay: "swap",
 });
+
 globalFontFace("Comic Code", {
-  src: "url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Italic.woff2') format('woff2'), url('https://m.doughmination.gay/f/Comic-Code/woff/ComicCode-Italic.woff') format('woff')",
-  fontWeight: 400,
-  fontStyle: "italic",
-  fontDisplay: "swap",
-});
-globalFontFace("Comic Code", {
-  src: "url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Medium.woff2') format('woff2'), url('https://m.doughmination.gay/f/Comic-Code/woff/ComicCode-Medium.woff') format('woff')",
-  fontWeight: 500,
-  fontStyle: "normal",
-  fontDisplay: "swap",
-});
-globalFontFace("Comic Code", {
-  src: "url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Bold.woff2') format('woff2'), url('https://m.doughmination.gay/f/Comic-Code/woff/ComicCode-Bold.woff') format('woff')",
+  src: "url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Bold.woff2') format('woff2')",
   fontWeight: 700,
   fontStyle: "normal",
   fontDisplay: "swap",
 });
 
-// Dark mode trans is the identity. Light mode has been dropped so the palette is
-// uniform across every site — dark is the single look.
 globalStyle(":root", {
-  vars: assignVars(vars, darkValues),
+  vars: assignVars(vars, bloodValues),
   colorScheme: "dark",
 });
 
-// Minimal reset.
 globalStyle("*, *::before, *::after", {
   boxSizing: "border-box",
   margin: 0,
@@ -63,8 +45,19 @@ globalStyle("html, body", {
   minHeight: "100%",
 });
 
+globalStyle("html", {
+  scrollBehavior: "smooth",
+  "@media": {
+    "(prefers-reduced-motion: reduce)": {
+      scrollBehavior: "auto",
+    },
+  },
+});
+
 globalStyle("body", {
-  background: vars.color.bg,
+  background: `radial-gradient(ellipse at top, ${vars.color.accentDeep} 0%, ${vars.color.bg} 60%)`,
+  backgroundColor: vars.color.bg,
+  backgroundAttachment: "fixed",
   color: vars.color.text,
   fontFamily: vars.font.sans,
   lineHeight: 1.5,
@@ -76,8 +69,11 @@ globalStyle("a", {
   textDecoration: "none",
 });
 
-// Respect users who ask for less motion: kill every animation/transition,
-// including decorative pseudo-elements, in one sweep.
+globalStyle("::selection", {
+  background: vars.color.accent,
+  color: vars.color.text,
+});
+
 globalStyle("*, *::before, *::after", {
   "@media": {
     "(prefers-reduced-motion: reduce)": {

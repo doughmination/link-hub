@@ -12,8 +12,7 @@ const withVanillaExtract = createVanillaExtractPlugin({
   },
 });
 
-// "export" emits a fully static site to out/ — what Cloudflare Pages serves.
-// (Previously "standalone", which built a Node server for the Dockerfile.)
+// "export" emits a fully static site to out/ — what Cloudflare Pages serves
 const nextConfig: NextConfig = {
   output: "export",
 };

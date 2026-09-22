@@ -3,94 +3,165 @@
  * Licensed under the DASL-1.0 Licence.
  * See LICENCE.md in the project root for full licence information.
  */
-/* app/page.tsx */
+
+import {
+  ArrowRight,
+  ChevronDown,
+  Compass,
+  Globe,
+  Heart,
+} from "pixelarticons/react";
 
 import {
   page,
-  header,
-  brand,
-  avatarWrap,
-  avatarDisc,
+  hero,
+  heroCentre,
+  portalRing,
   avatar,
-  actions,
-  btnPrimary,
-  btnSecondary,
+  title,
+  tagline,
+  scrollCue,
+  scrollCueIcon,
+  content,
+  section,
+  sectionHeading,
+  sectionNote,
+  routeList,
+  route,
+  routeTop,
+  routeIcon,
+  routeIndex,
+  routeHost,
+  routeTitle,
+  routeDescription,
+  routeEnter,
   footer,
+  footerHeart,
+  icon,
 } from "@styles/home.css";
-import SiteGrid from "@app/SiteGrid";
-import Tagline from "@app/Tagline";
-import BrandName from "@app/BrandName";
+import { portal } from "@data/portal";
+import {
+  sites,
+  hostOf,
+} from "@data/sites";
+import Arrival from "@app/Arrival";
+import RouteBadge from "@app/RouteBadge";
+import SubdomainList from "@app/SubdomainList";
 
-// PocketID login; the signup page is on this site at /signup.
-const pocketIdUrl = "https://doughmination.xyz";
-
-// Edit me: add or change your sites here.
-const sites = [
-  {
-    title: "Doughmination Gay",
-    desc: "My personal website",
-    href: "https://doughmination.gay",
-  },
-  {
-    title: "Doughmination Blog",
-    desc: "My personal blog",
-    href: "https://blog.doughmination.gay",
-  },
-  {
-    title: "Doughmination Music",
-    desc: "My music app and collection",
-    href: "https://doughmination.me",
-  },
-  {
-    title: "Doughmination Mail",
-    desc: "My private email service",
-    href: "https://mail.doughmination.gay",
-  },
-  {
-    title: "Doughmination System",
-    desc: "System Tracker and Headmate Management",
-    href: "https://doughmination.co.uk",
-  },
-  {
-    title: "Doughmination API",
-    desc: "Public API have made",
-    href: "https://doughmination.uk",
-  }
-];
+// "01", "02", … so every route number has the same width
+function routeNumber(position: number) {
+  return String(position + 1).padStart(2, "0");
+}
 
 export default function Page() {
   return (
     <main className={page}>
-      <div className={actions}>
-        <a className={btnSecondary} href={pocketIdUrl}>Log in</a>
-        <a className={btnPrimary} href="/signup">Sign up</a>
-      </div>
+      <header className={hero}>
+        <Arrival />
 
-      <header className={header}>
-        <div className={brand}>
-          <div className={avatarWrap}>
-            <span className={avatarDisc} aria-hidden />
+        <div className={heroCentre}>
+          <div className={portalRing}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={avatar}
-              src="https://m.doughmination.gay/img/avatars/favicon.png"
-              alt="Clove's avatar"
-              width={140}
-              height={140}
+              src={portal.avatarUrl}
+              alt={`${portal.owner}'s avatar`}
+              width={136}
+              height={136}
             />
           </div>
 
-          <BrandName />
+          <h1 className={title}>{portal.greeting}</h1>
+          <p className={tagline}>{portal.tagline}</p>
         </div>
 
-        <Tagline />
+        <a
+          className={scrollCue}
+          href="#routes"
+        >
+          scroll for the routes
+          <ChevronDown
+            className={scrollCueIcon}
+            aria-hidden
+          />
+        </a>
       </header>
 
-      <SiteGrid sites={sites} />
+      <div className={content}>
+        <section
+          id="routes"
+          className={section}
+        >
+          <h2 className={sectionHeading}>
+            <Compass
+              className={icon}
+              aria-hidden
+            />
+            routes
+          </h2>
+          <p className={sectionNote}>pick a door. they all go somewhere i made.</p>
 
-      <footer className={footer}>
-        © {new Date().getFullYear()} Doughmination System
-      </footer>
+          <ol className={routeList}>
+            {sites.map((site, position) => {
+              const SiteIcon = site.icon;
+
+              return (
+                <li key={site.href}>
+                  <a
+                    className={route}
+                    href={site.href}
+                  >
+                    <span className={routeTop}>
+                      <SiteIcon
+                        className={routeIcon}
+                        aria-hidden
+                      />
+                      <span className={routeIndex}>
+                        {routeNumber(position)}
+                      </span>
+                    </span>
+                    <span className={routeHost}>{hostOf(site.href)}</span>
+                    <span className={routeTitle}>{site.title}</span>
+                    <span className={routeDescription}>
+                      {site.description}
+                    </span>
+                    <RouteBadge href={site.href} />
+                    <span
+                      className={routeEnter}
+                      aria-hidden
+                    >
+                      step through
+                      <ArrowRight className={icon} />
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+
+        <section className={section}>
+          <h2 className={sectionHeading}>
+            <Globe
+              className={icon}
+              aria-hidden
+            />
+            other entrances
+          </h2>
+          <p className={sectionNote}>same portal, lots of front doors. they all lead here.</p>
+
+          <SubdomainList />
+        </section>
+
+        <footer className={footer}>
+          made with
+          <Heart
+            className={footerHeart}
+            aria-label="love"
+          />
+          by {portal.owner.toLowerCase()} · © {new Date().getFullYear()} {portal.footer}
+        </footer>
+      </div>
     </main>
   );
 }

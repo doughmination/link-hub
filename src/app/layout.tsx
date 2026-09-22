@@ -3,59 +3,51 @@
  * Licensed under the DASL-1.0 Licence.
  * See LICENCE.md in the project root for full licence information.
  */
-/* app/layout.tsx */
 
-import type { Metadata, Viewport } from "next";
-import SoundFX from "./SoundFX";
+import type {
+  Metadata,
+  Viewport,
+} from "next";
+
 import "@styles/global.css";
 
-const DESCRIPTION = "A little map to everything I make.";
+import { portal } from "@data/portal";
+import DevtoolsGuard from "@app/DevtoolsGuard";
+import {
+  primarySubdomain,
+  subdomainUrl,
+} from "@data/subdomains";
 
-const AVATAR = "https://m.doughmination.gay/img/avatars/favicon.png";
+const title = portal.name;
 
-const SITE_URL = "https://doughmination.info";
+const description = portal.tagline;
+
+const avatarUrl = portal.avatarUrl;
+
+const siteUrl = subdomainUrl(primarySubdomain);
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Clove",
-  description: DESCRIPTION,
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   alternates: {
-    canonical: SITE_URL,
+    canonical: siteUrl,
   },
   icons: {
-    icon: [
-      {
-        url: AVATAR,
-        type: "image/png",
-      },
-    ],
+    icon: avatarUrl,
   },
   openGraph: {
     type: "website",
-    siteName: "doughmination.info",
-    title: "Clove",
-    description: DESCRIPTION,
-    url: SITE_URL,
+    title,
+    description,
+    url: siteUrl,
     locale: "en_GB",
-    images: [
-      {
-        url: AVATAR,
-        alt: "Clove Twilight logo",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    site: "@DoughminCEO",
-    creator: "@DoughminCEO",
-    title: "Clove",
-    description: DESCRIPTION,
-    images: [AVATAR],
+    images: [avatarUrl],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5a9b8",
+  themeColor: "#ba181b",
 };
 
 export default function RootLayout({
@@ -74,7 +66,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <SoundFX />
+        <DevtoolsGuard />
       </body>
     </html>
   );
