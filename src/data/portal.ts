@@ -7,9 +7,9 @@
 // Edit me: rename the portal here; layout metadata and the page both read it
 export const portal = {
   name: "Clove's Portal",
-  owner: "Clove",
-  greeting: "hi, i'm clove",
-  tagline: "this is my little corner of the internet. everything i make lives just through here.",
+  owner: "Clove Twilight",
+  greeting: "Hi! I'm Clove",
+  tagline: "This is my little corner of the internet. Everything I make lives just through here.",
   avatarUrl: "https://m.doughmination.gay/img/avatars/favicon.png",
   footer: "Doughmination System",
   sourceUrl: "https://github.com/doughmination/link-hub",

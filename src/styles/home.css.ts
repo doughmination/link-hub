@@ -434,3 +434,15 @@ export const footerHeart = style([
     animation: `${heartbeat} 1.4s ease-in-out infinite`,
   },
 ]);
+
+export const claimText = style({
+  color: vars.color.muted,
+  fontSize: "0.75rem"
+});
+
+export const emailAddress = style([
+  
+  {
+    color: vars.color.accentBright
+  }
+])

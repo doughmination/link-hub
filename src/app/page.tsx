@@ -18,6 +18,8 @@ import {
   heroCentre,
   portalRing,
   avatar,
+  claimText,
+  emailAddress,
   title,
   tagline,
   scrollCue,
@@ -99,7 +101,7 @@ export default function Page() {
             />
             routes
           </h2>
-          <p className={sectionNote}>pick a door. they all go somewhere i made.</p>
+          <p className={sectionNote}>Pick a door. They all go somewhere I made.</p>
 
           <ol className={routeList}>
             {sites.map((site, position) => {
@@ -148,9 +150,9 @@ export default function Page() {
             />
             other entrances
           </h2>
-          <p className={sectionNote}>same portal, lots of front doors. they all lead here.</p>
-
+          <p className={sectionNote}>Same portal, lots of front doors. they all lead here.</p>
           <SubdomainList />
+          <p className={claimText}>Looking for a particular entrance? If you'd like to claim one of the subdomains I own, feel free to reach out at <a className={emailAddress} href="mailto:clove@doughmination.gay?subject=Claim%20a%20subdomain">clove@doughmination.gay</a> and we can figure something out! ^w^</p>
         </section>
 
         <footer className={footer}>
@@ -159,7 +161,7 @@ export default function Page() {
             className={footerHeart}
             aria-label="love"
           />
-          by {portal.owner.toLowerCase()} · © {new Date().getFullYear()} {portal.footer}
+          by {portal.owner} · © {new Date().getFullYear()} {portal.footer}
         </footer>
       </div>
     </main>

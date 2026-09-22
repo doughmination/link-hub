@@ -17,6 +17,7 @@ import {
   Shield,
   Users,
   Globe,
+  AvatarCircle,
 } from "pixelarticons/react";
 
 export type Site = {
@@ -65,16 +66,22 @@ export const sites: Site[] = [
     icon: Mail,
   },
   {
+    title: "Doughmination API",
+    description: "Public API I have made",
+    href: "https://doughmination.uk",
+    icon: Code,
+  },
+  {
     title: "Doughmination System",
     description: "System tracker and headmate management",
     href: "https://doughmination.co.uk",
     icon: Users,
   },
   {
-    title: "Doughmination API",
-    description: "Public API I have made",
-    href: "https://doughmination.uk",
-    icon: Code,
+    title: "PKViewer",
+    description: "Lookup public PluralKit systems and their members, with full customization!",
+    href: "https://pkviewer.xyz",
+    icon: AvatarCircle,
   },
 ];
 
