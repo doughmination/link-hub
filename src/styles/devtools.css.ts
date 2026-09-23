@@ -62,7 +62,6 @@ export const bigIcon = style({
   width: "64px",
   height: "64px",
   color: vars.color.accentBright,
-  shapeRendering: "crispEdges",
   animation: `${wave} 0.8s ease-in-out 2`,
 });
 

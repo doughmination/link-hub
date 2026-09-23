@@ -6,7 +6,7 @@
 
 "use client";
 
-import { MapPin } from "pixelarticons/react";
+import DoodleIcon from "@app/DoodleIcon";
 
 import {
   chipList,
@@ -37,7 +37,8 @@ export default function SubdomainList() {
               title={isCurrent ? "you are here" : undefined}
             >
               {isCurrent && (
-                <MapPin
+                <DoodleIcon
+                  name="locationPin"
                   className={icon}
                   aria-hidden
                 />

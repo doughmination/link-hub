@@ -23,14 +23,14 @@ The subdomain list lives in `src/data/subdomains.ts` — that file is the single
 - **TypeScript** everywhere. TypeScript is the preferred language for this project.
 - **Vanilla Extract** for styling: `.css.ts` files compiled to static CSS at build time (zero runtime). Do not add a runtime CSS-in-JS library.
 - **Turbopack** for dev/build; **Bun** as the package manager.
-- **pixelarticons** for every icon: `import { Home } from "pixelarticons/react"`. Don't add another icon pack.
+- **doodle-icons** for every icon: `<DoodleIcon name="home" />` from `@app/DoodleIcon`. SVGs live as strings in `src/data/doodle-icons.ts`; the downloaded pack in `icons/` is gitignored. Don't add another icon pack.
 - **Deployed on Cloudflare Pages.** The `./out` static export is served by Pages.
 
 ## Layout
 
 ```
 src/app/       App Router pages + small components
-src/data/      Editable content: portal.ts (name/tagline), subdomains.ts, sites.ts
+src/data/      Editable content: portal.ts (name/tagline), subdomains.ts, sites.ts, doodle-icons.ts
 src/styles/    Vanilla Extract stylesheets (.css.ts)
 ```
 

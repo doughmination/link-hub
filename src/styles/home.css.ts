@@ -70,12 +70,11 @@ const ringMask = "radial-gradient(farthest-side, transparent calc(100% - 4px), #
 
 const ringSize = "220px";
 
-// Shared by every inline pixel icon
+// Shared by every inline doodle icon
 export const icon = style({
   width: "1.25em",
   height: "1.25em",
   flexShrink: 0,
-  shapeRendering: "crispEdges",
 });
 
 export const page = style({

@@ -4,13 +4,7 @@
  * See LICENCE.md in the project root for full licence information.
  */
 
-import {
-  ArrowRight,
-  ChevronDown,
-  Compass,
-  Globe,
-  Heart,
-} from "pixelarticons/react";
+import DoodleIcon from "@app/DoodleIcon";
 
 import {
   page,
@@ -82,7 +76,8 @@ export default function Page() {
           href="#routes"
         >
           scroll for the routes
-          <ChevronDown
+          <DoodleIcon
+            name="chevronsDown"
             className={scrollCueIcon}
             aria-hidden
           />
@@ -95,7 +90,8 @@ export default function Page() {
           className={section}
         >
           <h2 className={sectionHeading}>
-            <Compass
+            <DoodleIcon
+              name="navigation"
               className={icon}
               aria-hidden
             />
@@ -105,8 +101,6 @@ export default function Page() {
 
           <ol className={routeList}>
             {sites.map((site, position) => {
-              const SiteIcon = site.icon;
-
               return (
                 <li key={site.href}>
                   <a
@@ -114,7 +108,8 @@ export default function Page() {
                     href={site.href}
                   >
                     <span className={routeTop}>
-                      <SiteIcon
+                      <DoodleIcon
+                        name={site.icon}
                         className={routeIcon}
                         aria-hidden
                       />
@@ -133,7 +128,10 @@ export default function Page() {
                       aria-hidden
                     >
                       step through
-                      <ArrowRight className={icon} />
+                      <DoodleIcon
+                        name="arrowRight"
+                        className={icon}
+                      />
                     </span>
                   </a>
                 </li>
@@ -144,7 +142,8 @@ export default function Page() {
 
         <section className={section}>
           <h2 className={sectionHeading}>
-            <Globe
+            <DoodleIcon
+              name="globe"
               className={icon}
               aria-hidden
             />
@@ -157,7 +156,8 @@ export default function Page() {
 
         <footer className={footer}>
           made with
-          <Heart
+          <DoodleIcon
+            name="heart"
             className={footerHeart}
             aria-label="love"
           />

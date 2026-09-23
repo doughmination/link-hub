@@ -6,7 +6,7 @@
 
 "use client";
 
-import { Undo } from "pixelarticons/react";
+import DoodleIcon from "@app/DoodleIcon";
 
 import {
   routeBadge,
@@ -25,7 +25,8 @@ export default function RouteBadge({ href }: { href: string }) {
 
   return (
     <span className={routeBadge}>
-      <Undo
+      <DoodleIcon
+        name="arrowLeft"
         className={icon}
         aria-hidden
       />

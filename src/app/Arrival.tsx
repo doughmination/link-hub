@@ -6,11 +6,7 @@
 
 "use client";
 
-import {
-  Link,
-  MapPin,
-  MessageText,
-} from "pixelarticons/react";
+import DoodleIcon from "@app/DoodleIcon";
 
 import {
   arrival,
@@ -38,7 +34,8 @@ export default function Arrival() {
   return (
     <div className={arrival}>
       <p className={arrivalLine}>
-        <MapPin
+        <DoodleIcon
+          name="locationPin"
           className={icon}
           aria-hidden
         />
@@ -51,7 +48,8 @@ export default function Arrival() {
 
       {referrerHost && (
         <p className={arrivalLine}>
-          <Link
+          <DoodleIcon
+            name="link"
             className={icon}
             aria-hidden
           />
@@ -65,7 +63,8 @@ export default function Arrival() {
       )}
 
       <p className={arrivalLine}>
-        <MessageText
+        <DoodleIcon
+          name="message"
           className={icon}
           aria-hidden
         />

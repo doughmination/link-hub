@@ -10,11 +10,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import {
-  Close,
-  Code,
-  Hand,
-} from "pixelarticons/react";
+import DoodleIcon from "@app/DoodleIcon";
 
 import {
   overlay,
@@ -125,7 +121,8 @@ export default function DevtoolsGuard() {
       role="alert"
     >
       <div className={panel}>
-        <Hand
+        <DoodleIcon
+          name="hand"
           className={bigIcon}
           aria-hidden
         />
@@ -143,7 +140,8 @@ export default function DevtoolsGuard() {
             target="_blank"
             rel="noreferrer"
           >
-            <Code
+            <DoodleIcon
+              name="fileCode"
               className={icon}
               aria-hidden
             />
@@ -156,7 +154,8 @@ export default function DevtoolsGuard() {
               type="button"
               onClick={() => setReason(null)}
             >
-              <Close
+              <DoodleIcon
+                name="cross"
                 className={icon}
                 aria-hidden
               />

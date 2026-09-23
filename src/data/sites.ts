@@ -4,84 +4,70 @@
  * See LICENCE.md in the project root for full licence information.
  */
 
-import type {
-  ComponentType,
-  SVGProps,
-} from "react";
-import {
-  Code,
-  ClipboardNote,
-  GitBranch,
-  Home,
-  Mail,
-  Shield,
-  Users,
-  Globe,
-  AvatarCircle,
-} from "pixelarticons/react";
+import type { DoodleName } from "@data/doodle-icons";
 
 export type Site = {
   title: string;
   description: string;
   href: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon: DoodleName;
 };
 
-// Edit me: add or change your sites here. Icon names: https://pixelarticons.com
+// Edit me: add or change your sites here. Icon names live in @data/doodle-icons
 export const sites: Site[] = [
   {
     title: "Doughmination Gay",
     description: "My personal website",
     href: "https://doughmination.gay",
-    icon: Home,
+    icon: "home",
   },
   {
     title: "CDN",
     description: "My random assets and images",
     href: "https://m.doughmination.gay",
-    icon: Globe,
+    icon: "globe",
   },
   {
     title: "Doughmination Auth",
     description: "My auth server for public access",
     href: "https://auth.doughmination.gay",
-    icon: Shield,
+    icon: "shield",
   },
   {
     title: "Dough Git",
     description: "My public git backup system",
     href: "https://backup.doughmination.gay",
-    icon: GitBranch,
+    icon: "floppy",
   },
   {
     title: "Pastebin",
     description: "My public dump location",
     href: "https://pastes.doughmination.gay",
-    icon: ClipboardNote,
+    icon: "paste",
   },
   {
     title: "Doughmination Mail",
     description: "My private email service",
     href: "https://mail.doughmination.gay",
-    icon: Mail,
+    icon: "mail",
   },
   {
     title: "Doughmination API",
     description: "Public API I have made",
     href: "https://doughmination.uk",
-    icon: Code,
+    icon: "fileCode",
   },
   {
     title: "Doughmination System",
     description: "System tracker and headmate management",
     href: "https://doughmination.co.uk",
-    icon: Users,
+    icon: "user",
   },
   {
     title: "PKViewer",
     description: "Lookup public PluralKit systems and their members, with full customization!",
     href: "https://pkviewer.xyz",
-    icon: AvatarCircle,
+    icon: "search",
   },
 ];
 
