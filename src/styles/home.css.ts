@@ -254,6 +254,7 @@ export const routeList = style({
   gridTemplateColumns: "repeat(auto-fill, minmax(17rem, 1fr))",
   gap: vars.space.md,
   listStyle: "none",
+  fontFamily: `var(--main-font), ${vars.font.sans}`,
 });
 
 export const route = style({

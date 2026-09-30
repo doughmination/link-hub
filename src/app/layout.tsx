@@ -13,6 +13,7 @@ import "@styles/global.css";
 
 import { portal } from "@data/portal";
 import DevtoolsGuard from "@app/DevtoolsGuard";
+import { mainFont } from "@app/fonts";
 import {
   primarySubdomain,
   subdomainUrl,
@@ -56,7 +57,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={mainFont.variable}
+    >
       <head>
         <link
           rel="preconnect"
