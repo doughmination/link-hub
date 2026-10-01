@@ -9,7 +9,6 @@
 	import '$lib/css/app.css';
 	import '$lib/css/main.css';
 	import '$lib/css/home.css';
-	import '$lib/css/devtools.css';
 
 	import { onMount } from 'svelte';
 	import { setLucideProps } from '@lucide/svelte';
