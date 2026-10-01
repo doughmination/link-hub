@@ -13,6 +13,7 @@
 
 	import { onMount } from 'svelte';
 	import { setLucideProps } from '@lucide/svelte';
+	import { dev } from '$app/environment';
 
 	import DevtoolsGuard from '$lib/components/DevtoolsGuard.svelte';
 	import { readArrival } from '$lib/app/arrival.svelte';
@@ -57,4 +58,7 @@
 
 {@render children()}
 
-<DevtoolsGuard />
+<!-- Off in dev so browser devtools and the Svelte devtools work -->
+{#if !dev}
+	<DevtoolsGuard />
+{/if}

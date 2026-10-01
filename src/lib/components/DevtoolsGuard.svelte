@@ -11,7 +11,7 @@
 
 	type Reason = 'keys' | 'open' | null;
 
-	const message = "Access or Operation Denied";
+	const message = 'Access or Operation Denied';
 
 	// Gap between window and viewport that means a docked devtools panel is open
 	const widthGap = 160;

@@ -10,7 +10,11 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter()
+			adapter: adapter(),
+			// Svelte Inspector in dev: Alt+X, then click an element to open its source
+			vitePlugin: {
+				inspector: true
+			}
 		})
 	]
 });
