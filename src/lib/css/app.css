@@ -1,0 +1,35 @@
+/* linkhub-beta/src/lib/css/app.css
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ * Licensed under the DASL-1.0 Licence.
+ * See LICENCE.md in the project root for full licence information.
+ */
+
+/* Blood red palette. Swap values here to retune the whole site. */
+:root {
+	/* Colours */
+	--color-bg: #0b090a;
+	--color-surface: #161a1d;
+	--color-surface-hover: #1f1416;
+	--color-border: #3a1417;
+	--color-text: #f5f3f4;
+	--color-muted: #b1a7a6;
+	--color-accent: #ba181b;
+	--color-accent-bright: #e5383b;
+	--color-accent-deep: #660708;
+
+	/* Typography */
+	--font-sans: 'Comic Code', ui-monospace, monospace;
+	--font-main: 'Hachi Maru Pop', var(--font-sans);
+
+	/* Spacing */
+	--space-xs: 0.5rem;
+	--space-sm: 0.75rem;
+	--space-md: 1rem;
+	--space-lg: 2rem;
+	--space-xl: 4rem;
+
+	/* Radius */
+	--radius-md: 0.75rem;
+	--radius-lg: 1.25rem;
+	--radius-full: 999px;
+}

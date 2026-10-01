@@ -1,0 +1,115 @@
+/* linkhub-beta/src/lib/css/devtools.css
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ * Licensed under the DASL-1.0 Licence.
+ * See LICENCE.md in the project root for full licence information.
+ */
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes wave {
+	0%,
+	100% {
+		transform: rotate(0deg);
+	}
+
+	25% {
+		transform: rotate(-12deg);
+	}
+
+	75% {
+		transform: rotate(12deg);
+	}
+}
+
+.devtoolsOverlay {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: grid;
+	place-items: center;
+	padding: var(--space-md);
+	background: rgba(11, 9, 10, 0.85);
+	backdrop-filter: blur(12px);
+	animation: fade-in 0.2s ease-out;
+}
+
+.devtoolsPanel {
+	max-width: 26rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-sm);
+	padding: var(--space-lg);
+	text-align: center;
+	background: var(--color-surface);
+	border: 1px solid var(--color-accent);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 0 48px -8px var(--color-accent);
+}
+
+.devtoolsBigIcon {
+	width: 64px;
+	height: 64px;
+	color: var(--color-accent-bright);
+	animation: wave 0.8s ease-in-out 2;
+}
+
+.devtoolsHeading {
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.devtoolsBody {
+	color: var(--color-muted);
+}
+
+.devtoolsActions {
+	margin-top: var(--space-sm);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--space-xs);
+}
+
+.devtoolsDismiss,
+.devtoolsSourceLink {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-xs);
+	padding: 0.5rem 1rem;
+	font: inherit;
+	color: var(--color-text);
+	background: var(--color-accent-deep);
+	border: 1px solid var(--color-accent-bright);
+	border-radius: var(--radius-full);
+	cursor: pointer;
+}
+
+.devtoolsDismiss:focus-visible,
+.devtoolsSourceLink:focus-visible {
+	outline: 2px solid var(--color-accent-bright);
+	outline-offset: 3px;
+}
+
+.devtoolsDismiss:hover {
+	background: var(--color-accent);
+}
+
+/* Outlined, so the dismiss button stays the main action */
+.devtoolsSourceLink {
+	background: transparent;
+	border-color: var(--color-border);
+}
+
+.devtoolsSourceLink:hover {
+	border-color: var(--color-accent-bright);
+	color: var(--color-accent-bright);
+}

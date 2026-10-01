@@ -1,0 +1,76 @@
+/* linkhub-beta/src/lib/css/main.css
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ * Licensed under the DASL-1.0 Licence.
+ * See LICENCE.md in the project root for full licence information.
+ */
+
+@font-face {
+	font-family: 'Comic Code';
+	src: url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Comic Code';
+	src: url('https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	min-height: 100%;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+}
+
+body {
+	background: radial-gradient(ellipse at top, var(--color-accent-deep) 0%, var(--color-bg) 60%);
+	background-color: var(--color-bg);
+	background-attachment: fixed;
+	color: var(--color-text);
+	font-family: var(--font-sans);
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+::selection {
+	background: var(--color-accent);
+	color: var(--color-text);
+}
