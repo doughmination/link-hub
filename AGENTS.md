@@ -15,44 +15,47 @@ These apply to every response, including casual conversation, not just code chan
 
 A personal portal for my collection of sites, served on a rotating set of `is-a.dev` subdomains.
 
-The subdomain list lives in `src/data/subdomains.ts` — that file is the single source of truth. Edit it there, not in components or here.
+The subdomain list lives in `src/lib/data/subdomains.ts` — that file is the single source of truth. Edit it there, not in components or here.
 
 ## Stack
 
-- **Next.js 16** (App Router) + **React 19**, built as a static export (`output: "export"` in `next.config.ts`).
+- **SvelteKit 2** + **Svelte 5** (runes mode forced in `vite.config.ts`).
 - **TypeScript** everywhere. TypeScript is the preferred language for this project.
-- **Vanilla Extract** for styling: `.css.ts` files compiled to static CSS at build time (zero runtime). Do not add a runtime CSS-in-JS library.
-- **Turbopack** for dev/build; **Bun** as the package manager.
-- **doodle-icons** for every icon: `<DoodleIcon name="home" />` from `@app/DoodleIcon`. SVGs live as strings in `src/data/doodle-icons.ts`; the downloaded pack in `icons/` is gitignored. Don't add another icon pack.
-- **Deployed on Cloudflare Pages.** The `./out` static export is served by Pages.
+- **Plain CSS** in `src/lib/css/`, imported globally from `src/routes/+layout.svelte`. No CSS-in-JS.
+- **Vite** for dev/build; **Bun** as the package manager.
+- **@lucide/svelte** for every icon. Don't add another icon pack.
+- **Deployed on Cloudflare Pages** via `@sveltejs/adapter-cloudflare`. Every page is prerendered (`prerender = true` in `src/routes/+layout.ts`).
 
 ## Layout
 
 ```
-src/app/       App Router pages + small components
-src/data/      Editable content: portal.ts (name/tagline), subdomains.ts, sites.ts, doodle-icons.ts
-src/styles/    Vanilla Extract stylesheets (.css.ts)
+src/routes/          Pages and the root layout
+src/lib/components/  Small Svelte components
+src/lib/app/         Client-side state (arrival.svelte.ts)
+src/lib/data/        Editable content: portal.ts (name/tagline), subdomains.ts, sites.ts
+src/lib/css/         Stylesheets: app.css (tokens), main.css (base), home.css, devtools.css
 ```
 
 ## Conventions
 
 - Every source file carries the DASL-1.0 licence header — keep it on new files.
-- Path aliases are configured in `tsconfig.json` (`@app`, `@data`, `@styles`). Use them.
-- Styling goes in a matching `.css.ts` file under `src/styles/`, not inline or in a runtime library. Import order in `layout.tsx` **is** the cascade order — preserve it.
-- Colours come from the blood red palette in `src/styles/theme.css.ts`. Use the `vars` tokens; don't hard-code hex values in components.
+- Use the `$lib` alias for imports.
+- Styles go in a stylesheet under `src/lib/css/`. Import order in `+layout.svelte` **is** the cascade order — preserve it.
+- Colours come from the blood red palette tokens in `src/lib/css/app.css`. Use the `var(--color-*)` tokens; don't hard-code hex values in rules.
 - English only. No i18n or translation layer — write display text directly.
-- Static export has no request host, so anything that reads the current subdomain must run client-side (see `src/app/useArrival.ts`).
-- ESLint is pinned to v9: `eslint-plugin-react` crashes under ESLint 10.
+- Pages are prerendered, so there is no request host. Anything that reads the current subdomain or referrer must run client-side (see `src/lib/app/arrival.svelte.ts`).
 
 ## Common commands
 
 ```bash
 bun install
-bun dev          # dev server, Turbopack
-bun run build    # static export to ./out
-bun run lint     # ESLint
+bun run dev      # dev server
+bun run build    # prerendered build to .svelte-kit/cloudflare
+bun run check    # svelte-check
+bun run lint     # Prettier + ESLint
+bun run format   # Prettier --write
 ```
 
 ## Before finishing
 
-Run `bun run lint` and confirm a clean `bun run build` (static export) after non-trivial changes.
+Run `bun run lint` and `bun run check`, and confirm a clean `bun run build` after non-trivial changes.

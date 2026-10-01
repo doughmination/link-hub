@@ -28,9 +28,9 @@ For the purposes of this Licence:
 
 **"Official Licensing Repositories"** means the repositories maintained by Clove Nytrix Doughmination Twilight for the administration and publication of licensing information:
 
-* GitHub: https://github.com/doughmination/licencing
-* Codeberg: https://codeberg.org/clove/licencing
-* Backup Forge: https://backup.doughmination.gay/clove/licencing
+- GitHub: https://github.com/doughmination/licencing
+- Codeberg: https://codeberg.org/clove/licencing
+- Backup Forge: https://backup.doughmination.gay/clove/licencing
 
 **"Official Licensing Records"** means licensing records published within an Official Licensing Repository, including `PEOPLE.md`, or other records expressly identified as authoritative by Clove Nytrix Doughmination Twilight.
 
@@ -62,26 +62,26 @@ An unauthorised Fork does **not** constitute an authorised copy of the Software 
 
 An unauthorised Fork may be used only for activities directly connected with contributing to the original Software, including:
 
-* inspecting and studying the Software;
-* preparing proposed changes to the Software;
-* modifying the Software for the purpose of preparing a Contribution;
-* testing or validating proposed Contributions;
-* submitting pull requests, patches, merge requests, or equivalent proposals to the original Software; and
-* performing other activities reasonably necessary to prepare or submit Contributions to the original Software.
+- inspecting and studying the Software;
+- preparing proposed changes to the Software;
+- modifying the Software for the purpose of preparing a Contribution;
+- testing or validating proposed Contributions;
+- submitting pull requests, patches, merge requests, or equivalent proposals to the original Software; and
+- performing other activities reasonably necessary to prepare or submit Contributions to the original Software.
 
 Without separate Authorisation, an unauthorised Fork **must not** be:
 
-* operated as an independent instance of the Software;
-* deployed for personal, private, public, organisational, or production use;
-* used to provide services to the Fork creator or to third parties;
-* made available to third parties for use;
-* distributed as an independent application or product;
-* published as an independent project;
-* used as the basis of a competing or replacement service;
-* commercially exploited;
-* sublicensed;
-* used to create or distribute derivative works for purposes unrelated to contributing to the original Software; or
-* otherwise used in any manner that constitutes independent use of the Software.
+- operated as an independent instance of the Software;
+- deployed for personal, private, public, organisational, or production use;
+- used to provide services to the Fork creator or to third parties;
+- made available to third parties for use;
+- distributed as an independent application or product;
+- published as an independent project;
+- used as the basis of a competing or replacement service;
+- commercially exploited;
+- sublicensed;
+- used to create or distribute derivative works for purposes unrelated to contributing to the original Software; or
+- otherwise used in any manner that constitutes independent use of the Software.
 
 The fact that a version-control platform permits a person to create, access, host, or publish a Fork does not constitute Authorisation to use that Fork for any purpose beyond those expressly permitted by this Section.
 
@@ -101,14 +101,14 @@ Any person or organisation wishing to use the Software for purposes other than t
 
 Authorisation may:
 
-* permit commercial or non-commercial use;
-* permit modification or contribution to the Software;
-* permit use of a Fork beyond Contribution Fork activities;
-* impose conditions or limitations;
-* restrict fields of use, duration, territory, or distribution;
-* specify particular projects, repositories, components, or versions;
-* require attribution, reporting, licensing fees, revenue sharing, or other obligations; or
-* be refused entirely.
+- permit commercial or non-commercial use;
+- permit modification or contribution to the Software;
+- permit use of a Fork beyond Contribution Fork activities;
+- impose conditions or limitations;
+- restrict fields of use, duration, territory, or distribution;
+- specify particular projects, repositories, components, or versions;
+- require attribution, reporting, licensing fees, revenue sharing, or other obligations; or
+- be refused entirely.
 
 Authorisation to contribute to the Software does not, by itself, grant permission to redistribute, publish, deploy, sublicense, commercially exploit, or otherwise use the Software outside the scope of the authorised contribution activity.
 
@@ -124,23 +124,23 @@ Clove Nytrix Doughmination Twilight may maintain an allowlist of trusted persons
 
 The allowlist may be published in:
 
-* `PEOPLE.md` within an Official Licensing Repository; or
-* the `README.md` of the relevant Software project where that file expressly identifies the applicable Authorisation and scope.
+- `PEOPLE.md` within an Official Licensing Repository; or
+- the `README.md` of the relevant Software project where that file expressly identifies the applicable Authorisation and scope.
 
 The allowlist may specify, for each Authorised Person:
 
-* the identity or account of the Authorised Person;
-* the projects or repositories to which the Authorisation applies;
-* the activities they may perform;
-* whether they may modify or contribute to the Software;
-* whether they may create or maintain Contribution Forks;
-* whether they may operate or deploy the Software;
-* whether they may use a Fork for purposes beyond contributing to the original Software;
-* whether they may review or approve Contributions;
-* whether they may distribute or publish particular material;
-* whether they may exercise additional rights beyond those granted to ordinary Contributors;
-* any restrictions or conditions applicable to their Authorisation; and
-* the duration or status of the Authorisation.
+- the identity or account of the Authorised Person;
+- the projects or repositories to which the Authorisation applies;
+- the activities they may perform;
+- whether they may modify or contribute to the Software;
+- whether they may create or maintain Contribution Forks;
+- whether they may operate or deploy the Software;
+- whether they may use a Fork for purposes beyond contributing to the original Software;
+- whether they may review or approve Contributions;
+- whether they may distribute or publish particular material;
+- whether they may exercise additional rights beyond those granted to ordinary Contributors;
+- any restrictions or conditions applicable to their Authorisation; and
+- the duration or status of the Authorisation.
 
 An Authorised Person is permitted only to the extent expressly specified by the applicable allowlist entry.
 
@@ -166,9 +166,9 @@ Clove Nytrix Doughmination Twilight may maintain Official Licensing Records iden
 
 The Official Licensing Repositories are:
 
-* GitHub: https://github.com/doughmination/licencing
-* Codeberg: https://codeberg.org/clove/licencing
-* Backup Forge: https://backup.doughmination.gay/clove/licencing
+- GitHub: https://github.com/doughmination/licencing
+- Codeberg: https://codeberg.org/clove/licencing
+- Backup Forge: https://backup.doughmination.gay/clove/licencing
 
 Where an individual or organisation is expressly listed as authorised within an applicable Official Licensing Record, that listing constitutes evidence of an active Authorisation subject to any accompanying conditions.
 
@@ -180,9 +180,9 @@ Absence from the Official Licensing Records shall not be interpreted as evidence
 
 Where Authorisation permits redistribution of the Software, all copies or substantial portions of the Software must include:
 
-* this Licence;
-* the copyright notice; and
-* reasonable attribution to **Clove Nytrix Doughmination Twilight**.
+- this Licence;
+- the copyright notice; and
+- reasonable attribution to **Clove Nytrix Doughmination Twilight**.
 
 Modified versions must clearly indicate that they have been modified.
 
@@ -194,15 +194,15 @@ Where Authorisation permits a Contributor to modify, contribute to, or submit ch
 
 Artificial Intelligence Systems may be used as development tools or aids. Permitted uses may include, but are not limited to:
 
-* explaining programming concepts or existing code;
-* assisting with research;
-* identifying potential bugs or errors;
-* suggesting implementations or approaches;
-* assisting with debugging;
-* suggesting refactoring;
-* generating or assisting with tests;
-* assisting with documentation; and
-* other development activities where the Contributor retains meaningful human involvement and responsibility.
+- explaining programming concepts or existing code;
+- assisting with research;
+- identifying potential bugs or errors;
+- suggesting implementations or approaches;
+- assisting with debugging;
+- suggesting refactoring;
+- generating or assisting with tests;
+- assisting with documentation; and
+- other development activities where the Contributor retains meaningful human involvement and responsibility.
 
 The use of an Artificial Intelligence System must not replace the Contributor's substantive development work, judgement, understanding, review, testing, or responsibility for a Contribution.
 
@@ -226,10 +226,10 @@ Violation of this Section constitutes a breach of the applicable Authorisation.
 
 You must not:
 
-* misrepresent the origin of the Software;
-* claim authorship of the original Software;
-* imply endorsement, sponsorship, certification, or affiliation by Clove Nytrix Doughmination Twilight; or
-* represent modified versions as official releases without prior written Authorisation.
+- misrepresent the origin of the Software;
+- claim authorship of the original Software;
+- imply endorsement, sponsorship, certification, or affiliation by Clove Nytrix Doughmination Twilight; or
+- represent modified versions as official releases without prior written Authorisation.
 
 ---
 
@@ -241,7 +241,7 @@ Without prior written Authorisation, you may not use any Trademarked Components 
 
 Current trademarks include, but are not limited to:
 
-* **Doughmination System®** (United Kingdom, UK00004263144)
+- **Doughmination System®** (United Kingdom, UK00004263144)
 
 This list is non-exhaustive.
 

@@ -1,0 +1,461 @@
+/* linkhub-beta/src/lib/css/home.css
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ * Licensed under the DASL-1.0 Licence.
+ * See LICENCE.md in the project root for full licence information.
+ */
+
+:root {
+	/* Keeps only a thin band at the edge of a circle, turning a gradient disc into a ring */
+	--ring-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+	--ring-size: 220px;
+}
+
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.45;
+		transform: scale(1);
+	}
+
+	50% {
+		opacity: 0.8;
+		transform: scale(1.08);
+	}
+}
+
+@keyframes bob {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(6px);
+	}
+}
+
+@keyframes heartbeat {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	15% {
+		transform: scale(1.25);
+	}
+
+	30% {
+		transform: scale(1);
+	}
+}
+
+/* Shared by every inline icon */
+.icon,
+.scrollCueIcon,
+.routeIcon,
+.footerHeart {
+	width: 1.25em;
+	height: 1.25em;
+	flex-shrink: 0;
+}
+
+.scrollCue:focus-visible,
+.route:focus-visible,
+.chip:focus-visible {
+	outline: 2px solid var(--color-accent-bright);
+	outline-offset: 3px;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Hero */
+
+.hero {
+	position: relative;
+	min-height: 100dvh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	justify-items: center;
+	gap: var(--space-lg);
+	padding: var(--space-lg) var(--space-md);
+	text-align: center;
+}
+
+.arrival {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	padding: var(--space-sm) var(--space-md);
+	font-size: 0.85rem;
+	color: var(--color-muted);
+	background: rgba(22, 26, 29, 0.6);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	backdrop-filter: blur(6px);
+	animation: rise-in 0.6s ease-out both;
+}
+
+.arrivalLine {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+	text-align: left;
+	overflow-wrap: anywhere;
+}
+
+.arrivalHost {
+	color: var(--color-accent-bright);
+	font-weight: 700;
+}
+
+.arrivalRoot {
+	color: var(--color-muted);
+}
+
+.heroCentre {
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-lg);
+	animation: rise-in 0.6s ease-out 0.1s both;
+}
+
+.portalRing {
+	position: relative;
+	width: var(--ring-size);
+	height: var(--ring-size);
+	display: grid;
+	place-items: center;
+}
+
+.portalRing::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: var(--radius-full);
+	background: conic-gradient(
+		var(--color-accent-deep),
+		var(--color-accent-bright),
+		var(--color-accent),
+		var(--color-accent-deep)
+	);
+	mask: var(--ring-mask);
+	-webkit-mask: var(--ring-mask);
+	animation: spin 6s linear infinite;
+}
+
+.portalRing::after {
+	content: '';
+	position: absolute;
+	inset: -24px;
+	z-index: -1;
+	border-radius: var(--radius-full);
+	background: radial-gradient(circle, var(--color-accent) 0%, transparent 65%);
+	filter: blur(18px);
+	animation: pulse 4s ease-in-out infinite;
+}
+
+.avatar {
+	width: 136px;
+	height: 136px;
+	border-radius: var(--radius-full);
+	border: 2px solid var(--color-border);
+}
+
+.title {
+	font-size: clamp(2rem, 7vw, 3.5rem);
+	font-weight: 700;
+	line-height: 1.1;
+	text-shadow: 0 0 24px var(--color-accent-deep);
+}
+
+.tagline {
+	max-width: 32rem;
+	color: var(--color-muted);
+}
+
+.scrollCue {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+	padding: var(--space-xs);
+	font-size: 0.8rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	border-radius: var(--radius-md);
+	transition: color 0.2s;
+}
+
+.scrollCue:hover {
+	color: var(--color-accent-bright);
+}
+
+.scrollCueIcon {
+	width: 28px;
+	height: 28px;
+	color: var(--color-accent-bright);
+	animation: bob 1.6s ease-in-out infinite;
+}
+
+/* Content */
+
+.content {
+	width: 100%;
+	max-width: 64rem;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xl);
+	padding: var(--space-lg) var(--space-md) var(--space-lg);
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	scroll-margin-top: var(--space-lg);
+}
+
+.sectionHeading {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-accent-bright);
+}
+
+.sectionHeading::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(to right, var(--color-accent-deep), transparent);
+}
+
+.sectionNote {
+	margin-bottom: var(--space-xs);
+	color: var(--color-muted);
+}
+
+/* Routes */
+
+.routeList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+	gap: var(--space-md);
+	list-style: none;
+	font-family: var(--font-main);
+}
+
+.route {
+	position: relative;
+	height: 100%;
+	min-height: 13rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	padding: var(--space-md);
+	overflow: hidden;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	transition:
+		border-color 0.2s,
+		transform 0.2s,
+		box-shadow 0.2s;
+}
+
+.route::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle at 100% 0%, var(--color-accent-deep) 0%, transparent 60%);
+	opacity: 0;
+	transition: opacity 0.2s;
+	pointer-events: none;
+}
+
+.route:hover {
+	border-color: var(--color-accent);
+	transform: translateY(-3px);
+	box-shadow: 0 12px 32px -12px var(--color-accent);
+}
+
+.route:hover::before {
+	opacity: 1;
+}
+
+.routeTop {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: var(--space-xs);
+}
+
+.routeIcon {
+	width: 40px;
+	height: 40px;
+	padding: 6px;
+	color: var(--color-accent-bright);
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	transition: border-color 0.2s;
+}
+
+.route:hover .routeIcon {
+	border-color: var(--color-accent);
+}
+
+.routeIndex {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--color-border);
+	transition: color 0.2s;
+}
+
+.route:hover .routeIndex {
+	color: var(--color-accent);
+}
+
+.routeHost {
+	position: relative;
+	font-size: 0.75rem;
+	color: var(--color-accent-bright);
+}
+
+.routeTitle {
+	position: relative;
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+
+.routeDescription {
+	position: relative;
+	font-size: 0.9rem;
+	color: var(--color-muted);
+}
+
+.routeBadge {
+	position: relative;
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	margin-top: var(--space-xs);
+	padding: 0.2rem 0.6rem;
+	font-size: 0.75rem;
+	background: var(--color-accent-deep);
+	border: 1px solid var(--color-accent-bright);
+	border-radius: var(--radius-full);
+}
+
+.routeEnter {
+	position: relative;
+	margin-top: auto;
+	padding-top: var(--space-sm);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-size: 0.8rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	transition:
+		color 0.2s,
+		transform 0.2s;
+}
+
+.route:hover .routeEnter {
+	color: var(--color-accent-bright);
+	transform: translateX(4px);
+}
+
+/* Subdomain chips */
+
+.chipList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs);
+	list-style: none;
+}
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0.3rem 0.8rem;
+	font-size: 0.85rem;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-full);
+	transition:
+		border-color 0.15s,
+		color 0.15s;
+}
+
+.chip:hover {
+	border-color: var(--color-accent);
+	color: var(--color-accent-bright);
+}
+
+.chipCurrent {
+	background: var(--color-accent-deep);
+	border-color: var(--color-accent-bright);
+}
+
+.claimText {
+	color: var(--color-muted);
+	font-size: 0.75rem;
+}
+
+.emailAddress {
+	color: var(--color-accent-bright);
+}
+
+/* Footer */
+
+.footer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.35rem;
+	padding-top: var(--space-lg);
+	font-size: 0.85rem;
+	color: var(--color-muted);
+	border-top: 1px solid var(--color-border);
+}
+
+.footerHeart {
+	color: var(--color-accent-bright);
+	animation: heartbeat 1.4s ease-in-out infinite;
+}
