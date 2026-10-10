@@ -1,0 +1,182 @@
+/* src/lib/styles/index.css
+ * DASL-1.2 — (c) Clove Twilight
+ */
+
+.page {
+	gap: 3rem;
+	width: 100%;
+	max-width: 62rem;
+	margin: 0 auto;
+	padding: 3rem 1.5rem 4rem;
+}
+
+/* Intro */
+
+.eyebrow {
+	margin: 0 0 0.5rem;
+	color: var(--accent);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.intro h1 {
+	margin: 0 0 0.75rem;
+	font-size: clamp(2.5rem, 8vw, 4rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+}
+
+.lede {
+	max-width: 36rem;
+	margin: 0;
+	color: var(--muted);
+	font-size: 1.1rem;
+}
+
+/* Sections */
+
+.section-heading {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	margin: 0 0 1rem;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.section-heading iconsax-icon {
+	color: var(--accent);
+}
+
+.section-note {
+	margin: -0.5rem 0 1rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+/* Site grid */
+
+.site-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+	gap: 0.75rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.site {
+	display: flex;
+	gap: 0.9rem;
+	align-items: flex-start;
+	height: 100%;
+	padding: 1rem 1.1rem;
+	border: 1px solid var(--line);
+	border-radius: 0.9rem;
+	background: var(--raised);
+	text-decoration: none;
+	transition:
+		border-color 0.2s ease,
+		background 0.2s ease;
+}
+
+.site:hover,
+.site:focus-visible {
+	border-color: var(--accent);
+	background: var(--accent-dim);
+}
+
+.site-icon {
+	display: grid;
+	flex-shrink: 0;
+	place-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 0.7rem;
+	background: var(--accent-dim);
+	color: var(--accent);
+}
+
+.site-text {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.site-title {
+	font-weight: 600;
+}
+
+.site-description {
+	color: var(--muted);
+	font-size: 0.9rem;
+	line-height: 1.45;
+}
+
+.site-host {
+	margin-top: 0.4rem;
+	color: var(--accent);
+	font-size: 0.75rem;
+	letter-spacing: 0.02em;
+}
+
+.site-arrow {
+	align-self: center;
+	color: var(--muted);
+	transition:
+		transform 0.2s ease,
+		color 0.2s ease;
+}
+
+.site:hover .site-arrow,
+.site:focus-visible .site-arrow {
+	color: var(--accent);
+	transform: translateX(3px);
+}
+
+/* Subdomain chips */
+
+.door-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.door {
+	display: inline-block;
+	padding: 0.3rem 0.75rem;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	font-size: 0.85rem;
+	text-decoration: none;
+	transition: border-color 0.2s ease;
+}
+
+.door:hover,
+.door:focus-visible {
+	border-color: var(--accent);
+}
+
+.door-root {
+	color: var(--muted);
+}
+
+/* The door the visitor came in through */
+.door.current {
+	border-color: var(--accent);
+	background: var(--accent-dim);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.site,
+	.site-arrow,
+	.door {
+		transition: none;
+	}
+}

@@ -1,8 +1,26 @@
 {
 	"name": "linkhub-beta",
-	"private": true,
 	"version": "0.0.1",
-	"type": "module",
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@sveltejs/adapter-cloudflare": "^7.2.9",
+		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@types/node": "^24.19.2",
+		"eslint": "^10.12.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.23.1",
+		"globals": "^17.13.0",
+		"prettier": "^3.9.9",
+		"prettier-plugin-svelte": "^4.1.1",
+		"svelte": "^5.57.2",
+		"svelte-check": "^4.7.6",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.71.1",
+		"vite": "^8.3.4",
+		"wrangler": "^4.149.0"
+	},
+	"private": true,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "wrangler types --check && vite build",
@@ -14,26 +32,9 @@
 		"format": "prettier --write .",
 		"gen": "wrangler types"
 	},
-	"devDependencies": {
-		"@eslint/js": "^10.0.1",
-		"@sveltejs/adapter-cloudflare": "^7.2.8",
-		"@sveltejs/kit": "^2.63.0",
-		"@sveltejs/vite-plugin-svelte": "^7.1.2",
-		"@types/node": "^24",
-		"eslint": "^10.4.1",
-		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-svelte": "^3.19.0",
-		"globals": "^17.6.0",
-		"prettier": "^3.8.3",
-		"prettier-plugin-svelte": "^4.1.0",
-		"svelte": "^5.56.1",
-		"svelte-check": "^4.6.0",
-		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.60.1",
-		"vite": "^8.0.16",
-		"wrangler": "^4.97.0"
-	},
+	"type": "module",
 	"dependencies": {
-		"@lucide/svelte": "^1.49.0"
+		"iconsax": "^0.1.1",
+		"simple-icons": "npm:@icons-pack/svelte-simple-icons@^7.2.0"
 	}
 }

@@ -5,52 +5,44 @@
 -->
 
 <script lang="ts">
-	// Import order is the cascade order: keep tokens, then base, then page styles
-	import '$lib/css/app.css';
-	import '$lib/css/main.css';
-	import '$lib/css/home.css';
+	// Components
+	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	// Themes
+	import '$lib/styles/global.css';
+	import '$lib/styles/theme.css';
+	import '$lib/styles/fonts.css';
+	// Scripts
+	import { readArrival } from '$lib/scripts/arrival.svelte';
 
+	// Other imports
 	import { onMount } from 'svelte';
-	import { setLucideProps } from '@lucide/svelte';
 
-	import { readArrival } from '$lib/app/arrival.svelte';
-	import { portal } from '$lib/data/portal';
-	import { primarySubdomain, subdomainUrl } from '$lib/data/subdomains';
-
+	// In-page scripts
 	let { children } = $props();
-
-	const siteUrl = subdomainUrl(primarySubdomain);
-
-	// Icons are sized in CSS, so nonScalingStroke (not the deprecated absoluteStrokeWidth) keeps strokes at 2.25px
-	setLucideProps({
-		strokeWidth: 2.25,
-		nonScalingStroke: true
-	});
-
 	onMount(readArrival);
 </script>
 
 <svelte:head>
-	<title>{portal.name}</title>
-	<meta name="description" content={portal.tagline} />
-	<meta name="theme-color" content={portal.themeColour} />
-	<link rel="canonical" href={siteUrl} />
-	<link rel="icon" href={portal.avatarUrl} />
+	<title>Clove's Portal</title>
+	<meta name="description" content="" />
+	<meta name="theme-color" content="" />
+	<link rel="canonical" href="" />
+	<link rel="icon" href="/favicon.svg" />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content={portal.name} />
-	<meta property="og:description" content={portal.tagline} />
-	<meta property="og:url" content={siteUrl} />
+	<meta property="og:title" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:url" content="" />
 	<meta property="og:locale" content="en_GB" />
-	<meta property="og:image" content={portal.avatarUrl} />
+	<meta property="og:image" content="/favicon.png" />
 
-	<link rel="preconnect" href="https://m.doughmination.gay" crossorigin="" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 	<link
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap"
 	/>
 </svelte:head>
 
+<Header />
 {@render children()}
+<Footer />

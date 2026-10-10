@@ -1,0 +1,81 @@
+/* src/lib/styles/header.css
+ * DASL-1.2 — (c) Clove Twilight
+ */
+
+/* Backdrop */
+
+.backdrop {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
+	height: 30rem;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.backdrop::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: url('../assets/background.avif') center / cover no-repeat;
+	opacity: 0.5;
+}
+
+.backdrop::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(rgb(11 10 13 / 55%), rgb(11 10 13 / 80%) 55%, var(--bg)),
+		radial-gradient(70% 60% at 20% 30%, rgb(235 69 158 / 12%), transparent 70%);
+}
+
+/* Top bar */
+
+header {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.5rem;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 62rem;
+	margin: 0 auto;
+	padding: 1.25rem 1.5rem;
+}
+
+header nav {
+	display: flex;
+	gap: 1.25rem;
+	font-size: 0.9rem;
+}
+
+header nav a {
+	display: inline-flex;
+	gap: 0.4em;
+	align-items: center;
+	color: var(--muted);
+	text-decoration: none;
+}
+
+header nav a:hover {
+	color: var(--text);
+}
+
+.brand {
+	display: inline-flex;
+	gap: 0.6rem;
+	align-items: center;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	text-decoration: none;
+}
+
+.brand img {
+	border-radius: 50%;
+	outline: 1px solid var(--line);
+}

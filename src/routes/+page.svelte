@@ -1,120 +1,75 @@
-<!-- linkhub-beta/src/routes/+page.svelte
+<!-- src/routes/+page.svelte
      Copyright (c) 2026 Clove Nytrix Doughmination Twilight
-     Licensed under the DASL-1.0 Licence.
+     Licensed under the DASL-1.2 Licence.
      See LICENCE.md in the project root for full licence information.
 -->
 
 <script lang="ts">
-	import { ArrowRight, ChevronsDown, Globe, Heart, Navigation } from '@lucide/svelte';
+	import '$lib/styles/index.css';
 
-	import Arrival from '$lib/components/Arrival.svelte';
-	import RouteBadge from '$lib/components/RouteBadge.svelte';
-	import SubdomainList from '$lib/components/SubdomainList.svelte';
-
-	import { portal } from '$lib/data/portal';
-	import { sites, hostOf } from '$lib/data/sites';
-
-	// "01", "02", … so every route number has the same width
-	function routeNumber(position: number) {
-		return String(position + 1).padStart(2, '0');
-	}
+	import { arrival } from '$lib/scripts/arrival.svelte';
+	import { sites, hostOf } from '$lib/scripts/sites';
+	import { rootDomain, subdomains, subdomainUrl } from '$lib/scripts/subdomains';
 </script>
 
 <main class="page">
-	<header class="hero">
-		<Arrival />
+	<section class="intro">
+		<p class="eyebrow">link hub</p>
+		<h1>Hi! I'm Clove</h1>
+		<p class="lede">
+			This is my little corner of the internet. Everything I make lives just through here.
+		</p>
+	</section>
 
-		<div class="heroCentre">
-			<div class="portalRing">
-				<img
-					class="avatar"
-					src={portal.avatarUrl}
-					alt={`${portal.owner}'s avatar`}
-					width="136"
-					height="136"
-				/>
-			</div>
+	<section class="section">
+		<h2 class="section-heading">
+			<iconsax-icon name="global" type="bulk" size="20"></iconsax-icon>
+			Sites
+		</h2>
 
-			<h1 class="title">{portal.greeting}</h1>
-			<p class="tagline">{portal.tagline}</p>
-		</div>
+		<ul class="site-grid">
+			{#each sites as site (site.href)}
+				<li>
+					<a class="site" href={site.href}>
+						<span class="site-icon">
+							<iconsax-icon name={site.icon} type="bulk" size="22"></iconsax-icon>
+						</span>
 
-		<a class="scrollCue" href="#routes">
-			scroll for the routes
-			<ChevronsDown class="scrollCueIcon" aria-hidden="true" />
-		</a>
-	</header>
+						<span class="site-text">
+							<span class="site-title">{site.title}</span>
+							<span class="site-description">{site.description}</span>
+							<span class="site-host">{hostOf(site.href)}</span>
+						</span>
 
-	<div class="content">
-		<section id="routes" class="section">
-			<h2 class="sectionHeading">
-				<Navigation class="icon" aria-hidden="true" />
-				routes
-			</h2>
+						<span class="site-arrow" aria-hidden="true">
+							<iconsax-icon name="arrow-right-02" type="linear" size="18"></iconsax-icon>
+						</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</section>
 
-			<p class="sectionNote">Pick a door. They all go somewhere I made.</p>
+	<section class="section">
+		<h2 class="section-heading">
+			<iconsax-icon name="link" type="bulk" size="20"></iconsax-icon>
+			Other doors
+		</h2>
 
-			<ol class="routeList">
-				{#each sites as site, position (site.href)}
-					<li>
-						<a class="route" href={site.href}>
-							<span class="routeTop">
-								<site.icon class="routeIcon" aria-hidden="true" />
+		<p class="section-note">Every one of these lands you right here.</p>
 
-								<span class="routeIndex">
-									{routeNumber(position)}
-								</span>
-							</span>
-
-							<span class="routeHost">
-								{hostOf(site.href)}
-							</span>
-
-							<span class="routeTitle">
-								{site.title}
-							</span>
-
-							<span class="routeDescription">
-								{site.description}
-							</span>
-
-							<RouteBadge href={site.href} />
-
-							<span class="routeEnter" aria-hidden="true">
-								step through
-								<ArrowRight class="icon" />
-							</span>
-						</a>
-					</li>
-				{/each}
-			</ol>
-		</section>
-
-		<section class="section">
-			<h2 class="sectionHeading">
-				<Globe class="icon" aria-hidden="true" />
-				other entrances
-			</h2>
-
-			<p class="sectionNote">Same portal, lots of front doors. they all lead here.</p>
-
-			<SubdomainList />
-
-			<p class="claimText">
-				Looking for a particular entrance? If you'd like to claim one of the subdomains I own, feel
-				free to reach out at
-				<a class="emailAddress" href="mailto:clove@doughmination.gay?subject=Claim%20a%20subdomain">
-					clove@doughmination.gay
-				</a>
-				and we can figure something out! ^w^
-			</p>
-		</section>
-
-		<footer class="footer">
-			made with
-			<Heart class="footerHeart" aria-label="love" role="img" />
-			by {portal.owner} · © {new Date().getFullYear()}
-			{portal.footer}
-		</footer>
-	</div>
+		<ul class="door-list">
+			{#each subdomains as subdomain (subdomain)}
+				<li>
+					<a
+						class="door"
+						class:current={subdomain === arrival.subdomain}
+						href={subdomainUrl(subdomain)}
+					>
+						{subdomain}<span class="door-root">.{rootDomain}</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</section>
 </main>

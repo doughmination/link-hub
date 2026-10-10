@@ -16,5 +16,8 @@ export default defineConfig({
 				inspector: true
 			}
 		})
-	]
+	],
+	optimizeDeps: {
+		exclude: ['iconsax']
+	}
 });

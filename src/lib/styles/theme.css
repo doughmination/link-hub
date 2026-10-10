@@ -1,0 +1,18 @@
+/* src/lib/styles/theme.css
+ * DASL-1.2 — (c) Clove Twilight
+ */
+
+:root {
+	--bg: #0b0a0d;
+	--raised: rgb(255 255 255 / 3.5%);
+	--line: rgb(255 255 255 / 9%);
+	--text: #ece9ef;
+	--muted: #a49eab;
+	--accent: #eb459e;
+	--accent-dim: rgb(235 69 158 / 14%);
+
+	color-scheme: dark;
+	font-family: 'IBM Plex Sans', system-ui, sans-serif;
+	background: var(--bg);
+	color: var(--text);
+}

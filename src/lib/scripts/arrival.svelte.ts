@@ -1,10 +1,10 @@
-/* linkhub-beta/src/lib/app/arrival.svelte.ts
+/* src/lib/scripts/arrival.svelte.ts
  * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
- * Licensed under the DASL-1.0 Licence.
+ * Licensed under the DASL-1.2 Licence.
  * See LICENCE.md in the project root for full licence information.
  */
 
-import { subdomainFromHost } from '$lib/data/subdomains';
+import { subdomainFromHost } from '$lib/scripts/subdomains';
 
 // Prerendered page has no request, so both stay null until readArrival runs in the browser
 export const arrival = $state({
