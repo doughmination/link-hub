@@ -42,7 +42,8 @@ export const subdomains = [
 	'transbian',
 	'transgender',
 	'ts',
-	'typescript'
+	'typescript',
+ 'yuri'
 ];
 
 // Edit me: optional line shown to visitors who came in on that subdomain
